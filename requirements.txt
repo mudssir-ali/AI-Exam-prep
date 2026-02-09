@@ -1,0 +1,4 @@
+flask
+pdfplumber
+openai==0.28.1
+gunicorn

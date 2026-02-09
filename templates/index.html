@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Exam Prep</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>📘 AI Exam Preparation</h1>
+        <p class="subtitle">
+            Upload your study material and get a personalized study plan and mock exam.
+        </p>
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+
+            <div class="field">
+                <label>Study Material (PDF)</label>
+                <input type="file" name="pdf" required>
+            </div>
+
+            <div class="field">
+                <label>Difficulty Level</label>
+                <select name="difficulty">
+                    <option>Easy</option>
+                    <option selected>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Question Types</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="qtype" value="MCQ" checked> MCQ</label>
+                    <label><input type="checkbox" name="qtype" value="Numerical" checked> Numerical</label>
+                    <label><input type="checkbox" name="qtype" value="Essay"> Essay</label>
+                </div>
+            </div>
+
+            <button type="submit">Generate Study Plan & Exam</button>
+        </form>
+{% if success %}
+<hr>
+
+<h2>✅ PDF Read Successfully</h2>
+
+<p><b>Difficulty:</b> {{ difficulty }}</p>
+<p><b>Question Types:</b> {{ question_types }}</p>
+
+<h3>📊 Analysis</h3>
+<div class="output-text">
+    {{ analysis }}
+</div>
+
+
+<h3>📚 Study Plan</h3>
+<pre>{{ study_plan }}</pre>
+
+<h3>📝 Mock Exam</h3>
+<pre>{{ exam }}</pre>
+{% endif %}
+
+
+    </div>
+
+    <footer>
+        Prototype · AI-powered · Content-based learning
+    </footer>
+</div>
+
+</body>
+</html>
